@@ -51,7 +51,6 @@ def score_game(game_core):
     for value in random_array:
         count_ls.append(game_core(number))
         score = int(np.mean(count_ls))
-#       print(f"Алгоритм угадывал число в среднем за {score} попыток")
     # Выделим минимальное значение из списка результатов.
     minimum = min(count_ls)
     if min(count_ls) == 1:
