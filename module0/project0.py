@@ -30,7 +30,6 @@ def game_core(number):
             '''
             end = predict - 1
             predict = (start + predict - 1) // 2
-
         elif predict < number:
             ''' 
             Здесь то же самое, но в другую сторону. Отсекаем меньшие числа и 
