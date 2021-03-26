@@ -87,7 +87,7 @@ while True:
     else:
         cell[x][y] = "0"
 
-    if motion > 4 and check_win():
+    if motion > 4 and check_win():  # С 5 хода делаем проверку на выигрыш.
         field()
         if motion % 2 == 1:
             print("Выиграл крестик!")
