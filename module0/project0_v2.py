@@ -25,19 +25,15 @@ def game_core(number):
         # На основе подсказок "больше-меньше" будем сужать диапазон поиска на каждом шаге.
         if predict > number:
             ''' 
-            Если предполагаемое число больше загаданного, отсечем все большие значения 
-            и новое число назначим из середины оставшейся выборки.
+            Если предполагаемое число больше загаданного, отбросим лишние числа из выборки
+            до верхней границы и ограничим выборку для следующего шага цикла.
             '''
-            end = predict - 1
-            predict = (start + predict - 1) // 2
+            end = predict
+            predict = np.random.randint(start, predict-1)
         elif predict < number:
-            ''' 
-            Здесь то же самое, но в другую сторону. Отсекаем меньшие числа и 
-            назначаем число из оставшейся выборки.
-            '''
-            start = predict + 1
-            predict = (predict + 1 + end) // 2
-
+            ''' Здесь то же самое, но в другую сторону. Отсекаем меньшие числа '''
+            start = predict
+            predict = np.random.randint(predict+1, end)
     return (count)
 
 
@@ -51,7 +47,6 @@ def score_game(game_core):
     for value in random_array:
         count_ls.append(game_core(number))
         score = int(np.mean(count_ls))
-#       print(f"Алгоритм угадывал число в среднем за {score} попыток")
     # Выделим минимальное значение из списка результатов.
     minimum = min(count_ls)
     if min(count_ls) == 1:
